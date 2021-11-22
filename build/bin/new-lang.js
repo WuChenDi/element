@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * 为组件库添加新语言，比如 fr（法语）
+ * 分别为涉及到的文件（components.json、page.json、route.json、nav.config.json、docs）设置该语言的相关配置
+ * 具体的配置项默认为英语，你只需要在相应的文件中将这些英文配置项翻译为对应的语言即可
+ */
 console.log();
 process.on('exit', () => {
   console.log();
@@ -22,14 +27,18 @@ if (componentFile.some(item => item.lang === lang)) {
   console.error(`${lang} already exists.`);
   process.exit(1);
 }
+// 得到新语言配置，默认配置为英文
 let componentNew = Object.assign({}, componentFile.filter(item => item.lang === 'en-US')[0], { lang });
+// 添加新语言
 componentFile.push(componentNew);
+// 将被改动后的 componentFile 写回到 components.json
 fileSave(path.join(__dirname, '../../examples/i18n/component.json'))
   .write(JSON.stringify(componentFile, null, '  '), 'utf8')
   .end('\n');
 
 // 添加到 page.json
 const pageFile = require('../../examples/i18n/page.json');
+// 新语言的默认配置为英语，只需要去 page.json 中将该语言配置中的应为翻译为该语言即可
 let pageNew = Object.assign({}, pageFile.filter(item => item.lang === 'en-US')[0], { lang });
 pageFile.push(pageNew);
 fileSave(path.join(__dirname, '../../examples/i18n/page.json'))
