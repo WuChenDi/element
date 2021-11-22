@@ -1,9 +1,11 @@
 'use strict';
+// 文件不存在，分析不了具体做什么
 
 const fs = require('fs');
 const path = require('path');
 const algoliasearch = require('algoliasearch');
 const slugify = require('transliteration').slugify;
+// 不存在该文件
 const key = require('./algolia-key');
 
 const client = algoliasearch('4C63BTGP6S', key);
