@@ -14,6 +14,7 @@
  *  在 /packages/theme-chalk/src/index.scss 文件中自动引入该组件的样式文件
  *  将类型声明文件在 /types/element-ui.d.ts 中自动引入
  * 总之，该脚本的存在，让你只需专注于编写你的组件代码，其它的一概不用管
+ * 在 Makefile 文件 new 配置 npm run build:file, 重新生成组件库入口 src/index.js, 形成完美的闭环
  */
 
 console.log();
